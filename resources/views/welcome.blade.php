@@ -1,45 +1,33 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>App Web IETAL | Pre Matricula </title>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@extends('layout')
+@section('content')
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+<!-- Main -->
+ <section id="banner">
+  <div class="inner">
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+      <h1>Hola, {{Auth::User()->nombre}}</h1>
+      </header>
+      <div class="content">
+        @if(Auth::user()->prematriculado)
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+            <p>Hemos recibido su información exitosamente, Verifique su estado</p>
+            @else
+            <p>Gracias por utilizar nuestro sistema de Pre-Matricual IETAL</p>
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+        @endif
 
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title"><a href="/login">  Pre-matricula 1.0</a></div>
-            </div>
-        </div>
-    </body>
-</html>
+        <ul class="actions">
+          @if(Auth::user()->prematriculado )
+
+          <li><a href="{{url('verificar-estado')}}" class="button next scrolly">Verficar Estado </a></li>
+          @else
+          <li><a href="{{route('datos.create')}}" class="button next scrolly">Pre-matricularme</a></li>
+
+         @endif
+
+        </ul>
+      </div>
+    </div>
+  </section>
+@endsection

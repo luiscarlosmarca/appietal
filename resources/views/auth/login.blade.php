@@ -12,8 +12,8 @@
 
         <!-- CSS -->
         {!!Html::style('css/reset.css')!!}
-          {!!Html::style('css/supersized.css')!!}
-            {!!Html::style('css/style.css')!!}
+        {!!Html::style('css/supersized.css')!!}
+        {!!Html::style('css/style.css')!!}
         <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
 
 
@@ -26,7 +26,8 @@
     </head>
 
     <body>
-@if (count($errors) > 0)
+        @if (count($errors) > 0)
+
                         <div class="alert alert-danger">
                             <strong>Whoops!</strong> Por favor corrige los errores<br><br>
                             <ul>
@@ -35,23 +36,20 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif
+          @endif
 
         <div class="page-container">
             <h1>Iniciar sesión | Pre-Matricula IETAL</h1>
-    <form method="POST" action="{{ url('/auth/login') }}">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <form method="POST" action="{{url('login')}}">
 
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <input type="text" name="email" class="username" placeholder="Digite su email">
+              <input type="password" name="password" class="password" placeholder="ingrese la contraseeña">
+              <button type="submit">Entrar</button>
+              <button><a href="{{route('user.create')}}">Registrarme</a></button>
+              <div class="error"><span>+</span></div>
 
-                <input type="text" name="email" class="username" placeholder="Digite su email">
-                <input type="password" name="password" class="password" placeholder="ingrese la contraseeña">
-                <button type="submit">Entrar</button>
-                <button><a href="/site/index.html">Registrarme</a></button>
-
-
-
-                <div class="error"><span>+</span></div>
-            </form>
+          </form>
 
         </div>
 

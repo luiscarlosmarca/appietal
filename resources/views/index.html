@@ -36,8 +36,12 @@
 							<li><a href="elements.html">Listado de no aceptados</a></li>
 						</ul>
 						<ul class="actions vertical">
+							@if (Auth::guest())
+								<li><p><a  class="button fit" href="{{route('login')}}" role="button">Iniciar Sesión</a></p></li>
+								@else
 
-							<li><a href="#" class="button fit">Cerrar sesión</a></li>
+								<li><a href="{{route('cerrar')}}" class="button fit">Cerrar sesión</a></li>
+						 @endif
 						</ul>
 					</nav>
 

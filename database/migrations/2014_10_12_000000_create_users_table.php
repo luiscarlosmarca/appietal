@@ -16,8 +16,9 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('email')->unique();
+            $table->boolean('prematriculado',false);
             $table->string('password', 60);
-            $table->string('tipo');
+            $table->enum('tipo',['admin','estudiante']);
             $table->rememberToken();
             $table->timestamps();
         });
