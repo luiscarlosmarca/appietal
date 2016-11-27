@@ -145,22 +145,83 @@ class MatriculaController extends Controller
       $institucions= new Institucion($request->all());
       $users=User::findOrFail($id);
       $users->prematriculado=true;
+      $users->aprobado='pendiente';
       $users->save();
 
       $institucions->user_id=$id;
       $institucions->save();
       return redirect('home');
     }
+
+    public function listAprobados()
+    {
+      $users=User::where('aprobado', 'aprobado')->get();
+
+      $criterio='aprobado';
+      return view('admin/list', compact('users','criterio'));
+
+
+    }
+
+    public function listPendientes()
+    {
+      $users=User::where('aprobado', 'pendiente')->get();
+
+      $criterio='pendiente';
+      return view('admin/list', compact('users','criterio'));
+
+    }
+
+    public function listNoAprobados()
+    {
+      $users=User::where('aprobado', 'no aprobado')->get();
+      $criterio='no aprobado';
+      return view('admin/list', compact('users','criterio'));
+
+    }
+
+    public function listAspirantes()
+    {
+      $users=User::where('prematriculado', 1)->get();
+
+      $criterio='aspirante';
+      return view('admin/list', compact('users','criterio'));
+
+
+    }
+
+    public function edit_datos($id)
+      {
+        // editr usuario desde la lista, solo para la vista disponible para el role admin para todos los campos
+         $user=User::findOrFail($id);
+         return view('admin/editDatos',compact('user'));
+        //editor solo mis datos el perfil se hace desde otro metodo
+      }
+      //
+      // public function edit_acudiente($id)
+      //   {
+      //     // editr usuario desde la lista, solo para la vista disponible para el role admin para todos los campos
+      //      $user=User::findOrFail($id);
+      //      return view('admin/editDatos',compact('user'));
+      //     //editor solo mis datos el perfil se hace desde otro metodo
+      //   }
+
+        // public function edit_institucion($id)
+        //   {
+        //     // editr usuario desde la lista, solo para la vista disponible para el role admin para todos los campos
+        //      $user=User::findOrFail($id);
+        //      return view('admin/editDatos',compact('user'));
+        //     //editor solo mis datos el perfil se hace desde otro metodo
+        //   }
+
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -169,9 +230,19 @@ class MatriculaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update_datos(Request $request, $id)
     {
-        //
+
+
+     $profile=Profile::findOrFail($id);
+     $id=$profile->user->id;
+     $user=User::findOrFail($id);
+     $user->aprobado=$request->aprobado;
+     $user->observaciones=$request->observaciones;
+     $profile->fill($request->all());
+     $user->save();
+     $profile->save();
+      return view('admin/editAcudiente',compact('user'));
     }
 
     /**

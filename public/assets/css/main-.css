@@ -54,6 +54,7 @@
 		-moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
+		background-color: #2b551a;
 	}
 
 /* Grid */
@@ -1943,8 +1944,6 @@
 	input[type="password"],
 	input[type="email"],
 	input[type="tel"],
-	input[type="search"],
-	input[type="url"],
 	select,
 	textarea {
 		-moz-appearance: none;
@@ -1966,8 +1965,6 @@
 		input[type="password"]:invalid,
 		input[type="email"]:invalid,
 		input[type="tel"]:invalid,
-		input[type="search"]:invalid,
-		input[type="url"]:invalid,
 		select:invalid,
 		textarea:invalid {
 			box-shadow: none;
@@ -1977,8 +1974,6 @@
 		input[type="password"]:focus,
 		input[type="email"]:focus,
 		input[type="tel"]:focus,
-		input[type="search"]:focus,
-		input[type="url"]:focus,
 		select:focus,
 		textarea:focus {
 			border-color: #9bf1ff;
@@ -2021,9 +2016,6 @@
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
-	input[type="tel"],
-	input[type="search"],
-	input[type="url"],
 	select {
 		height: 2.75em;
 	}
@@ -2374,69 +2366,6 @@
 					ul.actions.fit.small li {
 						padding: 0 0 0 1em;
 					}
-
-		ul.pagination {
-			cursor: default;
-			list-style: none;
-			padding-left: 0;
-		}
-
-			ul.pagination li {
-				display: inline-block;
-				padding-left: 0;
-				vertical-align: middle;
-			}
-
-				ul.pagination li > .page {
-					-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-					-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-					-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-					transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-					border-bottom: 0;
-					display: inline-block;
-					font-size: 0.8em;
-					font-weight: 600;
-					height: 1.5em;
-					line-height: 1.5em;
-					margin: 0 0.125em;
-					min-width: 1.5em;
-					padding: 0 0.5em;
-					text-align: center;
-				}
-
-					ul.pagination li > .page.active {
-						background-color: #ffffff;
-						color: #242943;
-					}
-
-						ul.pagination li > .page.active:hover {
-							background-color: #9bf1ff;
-							color: #242943 !important;
-						}
-
-						ul.pagination li > .page.active:active {
-							background-color: #53e3fb;
-						}
-
-				ul.pagination li:first-child {
-					padding-right: 0.75em;
-				}
-
-				ul.pagination li:last-child {
-					padding-left: 0.75em;
-				}
-
-			@media screen and (max-width: 480px) {
-
-				ul.pagination li:nth-child(n+2):nth-last-child(n+2) {
-					display: none;
-				}
-
-				ul.pagination li:first-child {
-					padding-right: 0;
-				}
-
-			}
 
 	dl {
 		margin: 0 0 2em 0;
@@ -3141,7 +3070,7 @@
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
-		background-color: #2a2f4a;
+		background-color: #197210;
 		box-shadow: 0 0 0.25em 0 rgba(0, 0, 0, 0.15);
 		cursor: default;
 		font-weight: 600;
@@ -3164,6 +3093,7 @@
 			height: inherit;
 			line-height: inherit;
 			padding: 0 1.5em;
+			background-color: #fff;
 		}
 
 			#header .logo strong {
@@ -3290,7 +3220,7 @@
 			}
 
 			#header.alt.style2 .logo strong {
-				color: #8d82c4;
+				color: #fff;
 			}
 
 			#header.alt.style3 .logo strong {
@@ -3440,8 +3370,7 @@
 			-webkit-pointer-events: none;
 			-ms-pointer-events: none;
 			pointer-events: none;
-			/*background-color: #242943;*/
-			background-color:rgba(66, 155, 50, 0.78);
+			background-color: #fff;
 			content: '';
 			display: block;
 			height: 100%;
@@ -3620,8 +3549,7 @@
 /* Main */
 
 	#main {
-	/*	background-color: #2a2f4a;*/
-		background-color:rgba(66, 155, 50, 0.78);
+		background-color: #2a2f4a;
 	}
 
 		#main > * {

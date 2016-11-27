@@ -1,4 +1,8 @@
 @extends('layout')
+@section('style')
+<link rel="stylesheet" href="assets/css/main-.css" />
+{!!Html::style('assets/css/main-.css')!!}
+@endsection
 @section('content')
 
 <!-- Main -->
@@ -17,6 +21,9 @@
 							{!!Form::open(['route'=>'datos.store','method'=>'POST','enctype'=>'multipart/form-data'])!!}
 
 								  @include('estudiantes.partials.fieldsDatos')
+									<!-- files -->
+								
+
 						  {!! Form::close() !!}
 
 						</div>

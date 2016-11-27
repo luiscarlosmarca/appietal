@@ -94,9 +94,56 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::group(['middleware'=>'role:admin'], function()
     {
-      Route::get('listAprobados', function () {
-          return view('admin.listAprobados');
-      });
+      Route::get('listAprobados',[//listado de los proyectos de los develper
+      'uses'	=>'MatriculaController@listAprobados',
+      'as'	  =>'list.aprobados'
+      ]);
+
+      Route::get('listNoAprobados',[//listado de los proyectos de los develper
+      'uses'	=>'MatriculaController@listNoAprobados',
+      'as'	  =>'list.noaprobados'
+      ]);
+      Route::get('listPendientes',[//listado de los proyectos de los develper
+      'uses'	=>'MatriculaController@listPendientes',
+      'as'	  =>'list.pendiente'
+      ]);
+      Route::get('listAspirantes',[//listado de los proyectos de los develper
+      'uses'	=>'MatriculaController@listAspirantes',
+      'as'	  =>'list.aspirantes'
+      ]);
+
+      Route::get('/editar-datos-aspirante/{id}',[
+      'uses'	=>'MatriculaController@edit_datos',
+      'as'  	=>'datos.edit'
+      ]);
+
+      Route::patch('/editar-datos-aspirante/{id}',[//falta desarrollar
+      'uses'	=>'MatriculaController@update_datos',
+      'as'  	=>'admin.datos.update'
+      ]);
+      //
+      //
+      // Route::get('/editar-datos-aspirante/{id}',[
+      // 'uses'	=>'MatriculaController@edit_acudiente',
+      // 'as'  	=>'admin.acudiente.edit'
+      // ]);
+
+      // Route::patch('/editar-acudiente-aspirante/{id}',[
+      // 'uses'	=>'MatriculaController@update_acudiente',
+      // 'as'  	=>'admin.acudiente.update'
+      // ]);
+      //
+      //
+      // Route::get('/editar-institucion-aspirante/{id}',[
+      // 'uses'	=>'MatriculaController@edit_institucion',
+      // 'as'  	=>'admin.institucion.edit'
+      // ]);
+
+      // Route::patch('/editar-institucion-aspirante/{id}',[
+      // 'uses'	=>'MatriculaController@update_institucion',
+      // 'as'  	=>'admin.institucion.update'
+      // ]);
+
     });
 
  });

@@ -17,8 +17,7 @@ class CreateInstitucionsTable extends Migration
           $table->string('sede');
           $table->string('grado');
           $table->string('jornada');
-          $table->string('aprobado');
-          $table->string('observaciones');
+    
 
           //relaciones con la tabla usuario
           $table->integer('user_id')->unsigned();

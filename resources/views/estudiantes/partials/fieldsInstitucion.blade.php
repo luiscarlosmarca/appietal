@@ -4,10 +4,10 @@
     <div class="select-wrapper">
       <select name="sede" id="demo-category">
         <option value="">- Seleccione la sede -</option>
-        <option value="principal">Sede Principal</option>
-        <option value="concordia civil">Escuela la Concordia</option>
-        <option value="grancolombia">Escuela gran Colombia</option>
-        <option value="servantes">Escuela Servantes</option>
+        <option value="Sede Principal">Sede Principal</option>
+        <option value="Escuela la Concordia">Escuela la Concordia</option>
+        <option value="Escuela Gran Colombia">Escuela gran Colombia</option>
+        <option value="Escuela Cervantes">Escuela Cervantes</option>
 
 
 

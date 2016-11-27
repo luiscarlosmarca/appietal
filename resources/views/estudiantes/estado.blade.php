@@ -1,4 +1,8 @@
 @extends('layout')
+@section('style')
+<link rel="stylesheet" href="assets/css/main-.css" />
+{!!Html::style('assets/css/main-.css')!!}
+@endsection
 @section('content')
 
 				<!-- Banner -->
@@ -8,14 +12,14 @@
 								<h1>Estado Pre-Matricula</h1>
 							</header>
 							<div class="content">
-								  @if(Auth::user()->institucion->aprobado=='Aprobado')
+								  @if(Auth::user()->aprobado=='aprobado')
 											<p>Bienvenido a la familia IETAL, descargue el certificado para continuar el proceso</p>
 											<ul class="actions">
 											<li><a href="primerPaso.html" class="button next scrolly">Descargar Certificado</a></li>
 											</ul>
-									@elseif(Auth::user()->institucion->aprobado=='No Aprobado')
+									@elseif(Auth::user()->aprobado=='no aprobado')
 											<p>Su solicitud de pre-matricula, no fue aprobada. :(</p><br>
-											<p><b>Observaciones:</b>{{Auth::user()->institucion->observaciones}}</p>
+											<p><b>Observaciones:</b>{{Auth::user()->observaciones}}</p>
 									@else
 											Aun estamos verifcando su informacion, vuelve a verificar estado otro día.
 									@endif

@@ -8,8 +8,9 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-	<link rel="stylesheet" href="assets/css/main.css" />
-	{!!Html::style('assets/css/main.css')!!}
+	<!-- <link rel="stylesheet" href="assets/css/main.css" />
+	{!!Html::style('assets/css/main.css')!!} -->
+	@yield('style')
 	<!-- Latest compiled and minified CSS -->
 
 	<!-- Fonts -->
@@ -27,7 +28,7 @@
 
 		<!-- Header -->
 			<header id="header" class="alt">
-				<a href="i{{url('home')}}" class="logo"><strong>Pre-matricula </strong> <span>APP WEB IETAL</span></a>
+				<a href="{{url('home')}}" class="logo"><strong>Pre-matricula </strong> <span>APP WEB IETAL</span></a>
 				<nav>
 					<a href="#menu">Menu</a>
 				</nav>
@@ -43,9 +44,11 @@
 						<li><a href="{{route('login')}}">Crear Cuenta</a></li>
 					@elseif(Auth::user()->admin())
 					  <li><a href="{{url('home')}}">Inicio</a></li>
-						<li><a href="{{url('listAprobados')}}">Listado de aspirantes</a></li>
-						<li><a href="generic.html">Listado de aprobados</a></li>
-						<li><a href="elements.html">Listado de no aceptados</a></li>
+							<li><a href="{{url('listAspirantes')}}">Listado de Aspirantes</a></li>
+						<li><a href="{{url('listAprobados')}}">Listado de aprobados</a></li>
+						<li><a href="{{url('listNoAprobados')}}">Listado de no aprobados</a></li>
+						<li><a href="{{url('listPendientes')}}">Listado de Pendientes</a></li>
+
 					@elseif(Auth::user()->estudiante())
 					  <li><a href="{{url('home')}}">Inicio</a></li>
 					@endif

@@ -1,4 +1,8 @@
 @extends('layout')
+@section('style')
+<link rel="stylesheet" href="assets/css/main-.css" />
+{!!Html::style('assets/css/main-.css')!!}
+@endsection
 @section('content')
 
 <div id="main" class="alt">
@@ -39,7 +43,7 @@
 											<input type="email" class="form-control" name="email" value="{{ old('email') }}">
 										</div>
 									</div>
-									
+
 
 									<div class="form-group">
 										<label class="col-md-4 control-label">Contraseña</label>
