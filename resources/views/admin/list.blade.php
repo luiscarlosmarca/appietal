@@ -4,8 +4,14 @@
     {!!Html::style('assets/css/main-.css')!!}
   @endsection
   @section('content')
-
-
+          <section id="one">
+            <div class="inner">
+                  <p>
+                    @include('admin.partials.search')
+                </p>
+            </div>
+         </section>
+         
           <section id="one">
             <div class="inner">
               <header class="major">

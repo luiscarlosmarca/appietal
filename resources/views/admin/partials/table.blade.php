@@ -27,7 +27,7 @@
                     <a href="{{url('editar-datos-aspirante/',$user)}}">
                     <img src="/images/edit.png" width="80" height="80">
                   </a>
-                     <a href="{{url('editar-datos-aspirante/',$user)}}">
+                     <a href="{{route('admin.aspirante.mi_pdf',$user)}}" target="_blank">
                     <img src="/images/pdf.png" width="80" height="80"></a>
                 </td>
               </tr>

@@ -76,7 +76,7 @@ class User extends Model implements AuthenticatableContract,
 
     public static function filter($nombre)
     {
-        return User::name($nombre)
+        return User::nombre($nombre)
 
           ->orderBy('created_at','DESC')
           ->paginate(30);

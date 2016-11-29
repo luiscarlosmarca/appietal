@@ -1,21 +1,19 @@
 <div class="row uniform">
-  @if(Auth::user()->admin())
-  {!!Form::select('aprobado', ['' => 'Seleccione estado del aspirante', 'aprobado' => 'aprobado',
-  'no aprobado'=>'no aprobado','pendiente'=>'pendiente'])!!}
-  @endif
+  <div class="12u$">
+      @if(Auth::user()->admin())
+      {!!Form::select('aprobado', ['' => 'Seleccione estado del aspirante', 'aprobado' => 'aprobado',
+      'no aprobado'=>'no aprobado','pendiente'=>'pendiente'])!!}
+      @endif
+  </div>
       <!-- datos personales -->
   <div class="6u 12u$(xsmall)">
     <label class="control-label" for="inputSuccess4">Documento de Identificación</label>
-
     {!! Form::text('numDoc',null,['class'=>'form-control','placeholder'=>'Digite su numero de identificación'])!!}
-
   </div>
   <div class="6u$ 12u$(xsmall)">
     <label class="control-label" for="inputSuccess4">Tipo Documento </label>
     {!!Form::select('tipoDoc', ['' => 'Seleccione tipo de documento', 'Tarjeta de identidad' => 'Tarjeta de identidad',
     'Registro civil'=>'Registro civil','Cedula'=>'Cedula'])!!}
-
-
   </div>
 
   <div class="6u 12u$(xsmall)">
@@ -129,26 +127,11 @@
       <label for="demo-human"> Documento de identidad formato PDF)</label>
    </div>
  @endif
+  <!-- datos adicionales -->
+  @if(Auth::user()->admin())
+    @include('admin.partials.fieldsAdicional')
+  @endif
   <!-- Break -->
+    @include('admin.partials.bottom')
 
-@if(Auth::user()->admin())
-  <div class="12u$">
-    <ul class="actions">
-      <li><input type="submit" value="Avanzar y guardar" class="special" /></li>
-      <li><input type="reset" value="Avanzar sin guardar" /></li>
-      <li><input type="reset" value="Cancelar" /></li>
-    </ul>
-  </div>
-@endif
-
-
-@if(Auth::user()->estudiante())
-  <div class="12u$">
-    <ul class="actions">
-      <li><input type="submit" value="Siguiente Paso" class="special" /></li>
-
-      <li><input type="reset" value="Cancelar" /></li>
-    </ul>
-  </div>
-@endif
 </div>

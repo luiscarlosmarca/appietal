@@ -1,7 +1,7 @@
 @extends('layout')
 @section('style')
-<link rel="stylesheet" href="assets/css/main-.css" />
-{!!Html::style('assets/css/main-.css')!!}
+<link rel="stylesheet" href="assets/css/main.css" />
+{!!Html::style('assets/css/main.css')!!}
 @endsection
 @section('content')
 
@@ -15,7 +15,8 @@
 								  @if(Auth::user()->aprobado=='aprobado')
 											<p>Bienvenido a la familia IETAL, descargue el certificado para continuar el proceso</p>
 											<ul class="actions">
-											<li><a href="primerPaso.html" class="button next scrolly">Descargar Certificado</a></li>
+
+											<li><a href="{{route('aspirante.mi_certificado')}}" target="_blank" class="button next scrolly">Descargar Certificado</a></li>
 											</ul>
 									@elseif(Auth::user()->aprobado=='no aprobado')
 											<p>Su solicitud de pre-matricula, no fue aprobada. :(</p><br>

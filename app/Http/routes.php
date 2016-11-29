@@ -45,6 +45,10 @@ Route::group(['middleware'=>'auth'], function(){
 
   Route::group(['middleware'=>'role:estudiante'], function()
   {
+    Route::get('/mi_certificado',[//ver pdf de cada projecto
+    'uses'	=>'MatriculaController@mi_certificado',
+    'as'	=>'aspirante.mi_certificado'
+    ]);
     Route::get('home', function () {
         return view('welcome');
     });
@@ -120,6 +124,11 @@ Route::group(['middleware'=>'auth'], function(){
       Route::patch('/editar-datos-aspirante/{id}',[//falta desarrollar
       'uses'	=>'MatriculaController@update_datos',
       'as'  	=>'admin.datos.update'
+      ]);
+
+      Route::get('/pdf_aspirante/{id}',[//ver pdf de cada projecto
+      'uses'	=>'MatriculaController@mi_pdf',
+      'as'	=>'admin.aspirante.mi_pdf'
       ]);
       //
       //

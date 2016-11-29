@@ -10,7 +10,11 @@ use AppIetal\Institucion;
 use Illuminate\Support\Facades\Auth;
 use AppIetal\Http\Requests;
 use AppIetal\Http\Controllers\Controller;
-
+use Barryvdh\DomPDF\Facade as PDF;
+use AppIetal\Http\Requests\CreateUserRequest;
+use AppIetal\Http\Requests\CreateProfileRequest;
+use AppIetal\Http\Requests\CreateAcudientesRequest;
+use AppIetal\Http\Requests\CreateInstitucionRequest;
 class MatriculaController extends Controller
 {
     /**
@@ -39,7 +43,7 @@ class MatriculaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store_user(Request $request)
+    public function store_user(CreateUserRequest $request)
     {
 
       $users= new User($request->all());
@@ -61,7 +65,7 @@ class MatriculaController extends Controller
      }
 
 
-     public function store_datos(Request $request)
+     public function store_datos(CreateProfileRequest $request)
      {
        $id=Auth::user()->id;
        $profiles= new Profile($request->all());
@@ -121,7 +125,7 @@ class MatriculaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store_acudientes(Request $request)
+    public function store_acudientes(CreateAcudientesRequest $request)
     {
 
       $acudientes= new Attendant($request->all());
@@ -139,7 +143,7 @@ class MatriculaController extends Controller
         return view('estudiantes.instituciones');
     }
 
-    public function store_institucions(Request $request)
+    public function store_institucions(CreateInstitucionRequest $request)
     {
       $id=Auth::user()->id;
       $institucions= new Institucion($request->all());
@@ -155,7 +159,7 @@ class MatriculaController extends Controller
 
     public function listAprobados()
     {
-      $users=User::where('aprobado', 'aprobado')->get();
+      $users=User::where('aprobado', 'aprobado')->orderBy('nombre', 'asc')->get();
 
       $criterio='aprobado';
       return view('admin/list', compact('users','criterio'));
@@ -165,7 +169,7 @@ class MatriculaController extends Controller
 
     public function listPendientes()
     {
-      $users=User::where('aprobado', 'pendiente')->get();
+      $users=User::where('aprobado', 'pendiente')->orderBy('nombre', 'asc')->get();
 
       $criterio='pendiente';
       return view('admin/list', compact('users','criterio'));
@@ -174,15 +178,16 @@ class MatriculaController extends Controller
 
     public function listNoAprobados()
     {
-      $users=User::where('aprobado', 'no aprobado')->get();
+      $users=User::where('aprobado', 'no aprobado')->orderBy('nombre', 'asc')->get();
       $criterio='no aprobado';
       return view('admin/list', compact('users','criterio'));
 
     }
 
-    public function listAspirantes()
+    public function listAspirantes(Request $request)
     {
-      $users=User::where('prematriculado', 1)->get();
+
+      $users=User::filter($request->get('nombre'))->where('prematriculado', 1);
 
       $criterio='aspirante';
       return view('admin/list', compact('users','criterio'));
@@ -236,13 +241,29 @@ class MatriculaController extends Controller
 
      $profile=Profile::findOrFail($id);
      $id=$profile->user->id;
-     $user=User::findOrFail($id);
-     $user->aprobado=$request->aprobado;
-     $user->observaciones=$request->observaciones;
+     $users=User::findOrFail($id);
+     $users->aprobado=$request->aprobado;
+     $users->observaciones=$request->observaciones;
      $profile->fill($request->all());
-     $user->save();
+     $users->save();
      $profile->save();
-      return view('admin/editAcudiente',compact('user'));
+     $criterio='aspirante';
+     return view('welcome');
+    }
+
+    public function mi_pdf($id)
+    {
+       $user=User::findOrFail($id);
+       $pdf = PDF::loadView('admin/mi_pdf',compact('user'));
+       return $pdf->stream();
+    }
+
+    public function mi_certificado()
+    {
+       $id=Auth::user()->id;
+       $user=User::findOrFail($id);
+       $pdf = PDF::loadView('estudiantes/mi_certificado',compact('user'));
+       return $pdf->stream();
     }
 
     /**

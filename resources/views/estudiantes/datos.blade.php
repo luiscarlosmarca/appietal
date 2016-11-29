@@ -7,7 +7,16 @@
 
 <!-- Main -->
 	<div id="main" class="alt">
-
+		@if (count($errors) > 0)
+				<div class="alert alert-danger">
+			 	<strong>Errores en el formulario</strong> Verifica los datos.<br><br>
+					<ul>
+						@foreach ($errors->all() as $error)
+							<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
+			@endif
 		<!-- One -->
 			<section id="one">
 				<div class="inner">
@@ -22,7 +31,7 @@
 
 								  @include('estudiantes.partials.fieldsDatos')
 									<!-- files -->
-								
+
 
 						  {!! Form::close() !!}
 

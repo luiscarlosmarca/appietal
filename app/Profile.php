@@ -1,7 +1,7 @@
 <?php
 
 namespace AppIetal;
-
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use AppIetal\Profiles;
 
@@ -25,5 +25,18 @@ class Profile extends Model
          }
 
    }
+
+   public function getAgeAttribute()
+   {
+
+     return Carbon::parse($this->feNa)->age;
+   }
+   public function getYearAttribute()
+   {
+     $date = Carbon::now();
+     $date = $date->format('d-m-Y');
+     return $date;
+   }
+
 
 }

@@ -31,8 +31,7 @@
         {!!Form::model($user->profile,['route'=>['admin.datos.update',$user->profile,$user->id],'method'=>'PATCH','enctype'=>'multipart/form-data'])!!}
 
           @include('estudiantes.partials.fieldsDatos')
-          {{$user->acudientes->nomPapa}}
-          {{$user->institucion->sede}}
+          
       {!! Form::close() !!}
       </p>
     </div>
