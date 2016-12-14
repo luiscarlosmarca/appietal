@@ -19,7 +19,7 @@
         <li><a href="Institucion.html">Institucional</a></liv>
         <li><a href="#">Sedes</a>
           <ul>
-            <li><a href="sedeconcordia.php">Escuela La Concorida</a></li>
+            <li><a href="sedeconcordia.php">Escuela La Concordia</a></li>
 
             <li><a href="sedecervantes.php">Escuela Cervantes</a></li>
             <li><a href="sedegrancolombia.php">Escuela la Gran Colombia</a></li>
@@ -42,7 +42,7 @@
           </ul>
         </li>
 
-        <li><a href="//localhost:8000" target="_blank">Pre-matricula</a></liv>
+        <li><a href="appietal.dev" target="_blank">Pre-matricula</a></liv>
       </ul>
     </nav>
 
