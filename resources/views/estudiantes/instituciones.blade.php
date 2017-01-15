@@ -2,6 +2,57 @@
 @section('style')
 <link rel="stylesheet" href="assets/css/main-.css" />
 {!!Html::style('assets/css/main-.css')!!}
+
+<script type="text/javascript">
+  function populate(s1,s2)
+  {
+    var s1=document.getElementById(s1);
+    var s2=document.getElementById(s2);
+    s2.innerHTML= "";
+
+    if(s1.value=="prescolar"||s1.value=="primero"||s1.value=="segundo"||s1.value=="tercero"||s1.value=="cuarto"||s1.value=="quinto"){
+      var optionArray =["|", "concordia| Escuela la Concordia",
+      "cervantes| Escuela la Cervantes",
+      "laureles| Escuela Laureles",
+      "grancolombia| Escuela la Gran Colombia"];
+    }else if(s1.value=="sexto"||s1.value=="septimo"||s1.value=="octavo"||s1.value=="noveno"||s1.value=="decimo"||s1.value=="sexto"){
+      var optionArray =["|", "principal|Sede Principal"];
+    }
+
+    for(var option in optionArray){
+      var pair=optionArray[option].split("|");
+      var newoption = document.createElement("option");
+      newoption.value=pair[0];
+      newoption.innerHTML=pair[1];
+      s2.options.add(newoption);
+    }
+  }
+
+  function populate2(s1,s2)
+  {
+    var s1=document.getElementById(s1);
+    var s2=document.getElementById(s2);
+    s2.innerHTML= "";
+
+    if(s1.value=="concordia"||s1.value=="laureles"){
+      var optionArray =["|", "mañana | mañana"];
+    }else if(s1.value=="principal"||s1.value=="cervantes"||s1.value=="grancolombia"){
+      var optionArray =["|", "tarde | tarde", "mañana | mañana"];
+    }
+    for(var option in optionArray){
+      var pair=optionArray[option].split("|");
+      var newoption = document.createElement("option");
+      newoption.value=pair[0];
+      newoption.innerHTML=pair[1];
+      s2.options.add(newoption);
+    }
+  }
+
+
+
+
+</script>
+</head>
 @endsection
 @section('content')
 				<!-- Main -->
@@ -30,47 +81,7 @@
 
 																	@include('estudiantes.partials.fieldsInstitucion')
 															{!! Form::close() !!}
-															<table style="width:100%">
-															  <tr>
-															    <th>Sede</th>
-															    <th>Jornada</th>
-															    <th>Grados</th>
-															  </tr>
-															  <tr>
-															    <td>Sede principal</td>
-															    <td>6 - 11</td>
-															    <td>Mañana y tarde</td>
-															  </tr>
-															  <tr>
-															    <td>Escuela la Concordia</td>
-															    <td> 0  - 5</td>
-															    <td>Jornada: Mañana</td>
-															  </tr>
-
-
-
-																<tr>
-																	<td>	Escuela Cervante</td>
-																	<td> 0  - 5</td>
-																	<td>JMañana y tarde</td>
-																</tr>
-
-																<tr>
-																	<td>	Escuela Laureles</td>
-																	<td> 0  - 5</td>
-																	<td>Mañana </td>
-																</tr>
-
-
-																<tr>
-																	<td>	Escuela Gran Colombia</td>
-																	<td> 0  - 5</td>
-																	<td>Mañana - Tarde </td>
-																</tr>
-
-
-															</table
-
+														
 
 														</p>
 														</div>

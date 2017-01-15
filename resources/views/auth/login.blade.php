@@ -46,8 +46,12 @@
               <input type="text" name="email" class="username" placeholder="Digite su email">
               <input type="password" name="password" class="password" placeholder="ingrese la contraseeña">
               <button type="submit">Entrar</button>
+
+
+
               <button><a href="{{route('user.create')}}">Registrarme</a></button>
               <div class="error"><span>+</span></div>
+              <button><a href="{{ url('/password/reset') }}">Recuperar Contraseña</a></button>
 
           </form>
 

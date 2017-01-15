@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'notificaciones@appietal.com', 'name' => 'App web IETAL'],
 
     /*
     |--------------------------------------------------------------------------

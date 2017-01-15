@@ -2,32 +2,9 @@
       <!-- datos personales -->
   <div class="12u 12u$(xsmall)">
     <div class="select-wrapper">
-      <select name="sede" id="demo-category">
-        <option value="">- Seleccione la sede -</option>
-        <option value="Sede Principal">Sede Principal</option>
-        <option value="Escuela la Concordia">Escuela la Concordia</option>
-        <option value="Escuela Gran Colombia">Escuela gran Colombia</option>
-        <option value="Escuela Cervantes">Escuela Cervantes</option>
-
-
-
-      </select>
-    </div>													</div>
-  <div class="12u$ 12u$(xsmall)">
-    <div class="select-wrapper">
-      <select name="jornada" id="demo-category">
-        <option value="">- Seleccione la jornada -</option>
-        <option value="mañana">Jornada - Mañana</option>
-        <option value="tarde">Jornada - Tarde</option>
-
-
-      </select>
-    </div>
-  </div>
-
-  <div class="12u$ 12u$(xsmall)">
-    <div class="select-wrapper">
-      <select name="grado" id="demo-category">
+      <h3>Seleccione el  Grado </h3>
+      <hr>
+      <select name="grado" id="grado" onchange="populate(this.id,'sede')">
         <option value="">- Seleccion el Grado -</option>
         <option value="prescolar">Prescolar</option>
         <option value="primero">Primero -  1</option>
@@ -43,6 +20,29 @@
         <option value="once">Once -  11</option>
 
       </select>
+    </div>
+	</div>
+  <div class="12u$ 12u$(xsmall)">
+    <div class="select-wrapper">
+      <hr>
+
+        <h3>Seleccione la Sede</h3>
+        <hr>
+        <select id="sede" name="sede" onchange="populate2(this.id,'jornada')">
+
+        </select>
+    <hr>
+    </div>
+  </div>
+
+  <div class="12u$ 12u$(xsmall)">
+    <div class="select-wrapper">
+      <h3>Seleccione la Jornada</h3>
+      <hr>
+      <select id="jornada" name="jornada">
+
+      </select>
+
     </div>
   </div>
 
